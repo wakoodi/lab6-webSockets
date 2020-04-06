@@ -1,12 +1,16 @@
 const Stat = require('../../../models/Stat.js')
+
 const getAll = (req, res) => {
-    Stat.find({"country": "Belgium"}, (err, doc) => {
-        res.json({
-            "status": "success",
-            "data": {
-                "stats" : doc
-            } 
-         })
+    Stat.find({}, (err, doc) => {
+
+        if(!err){
+            res.json({
+                "status": "success",
+                "data": {
+                    "stats" : doc
+                } 
+             })
+        }
     })
 
     
@@ -35,9 +39,26 @@ const create = (req, res, next) => {
             })
         }
     })
+}
 
-    
+const update = (req, res) => {
+    let country = req.body.country;
+    let number = req.body.number;
+    res.json({
+        "status": "success",
+        "country": country,
+        "number": number
+        
+    });
+    Stat.findOneAndUpdate({"country": country}, {"number": number})
+        .then(doc => {
+            res.json(doc);
+        }).catch(err => {
+            res.json(err);
+        })
+            
 }
 
 module.exports.getAll = getAll
 module.exports.create = create
+module.exports.update = update

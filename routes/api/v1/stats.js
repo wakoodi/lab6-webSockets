@@ -5,8 +5,9 @@ const statsController = require('../../../controllers/api/v1/stats')
 /* /api/v1/stats*/
 router.get('/', statsController.getAll)
 
+router.post('/', statsController.create)
 
-router.post("/", statsController.create)
+router.put('/', statsController.update)
 
 
 module.exports = router
