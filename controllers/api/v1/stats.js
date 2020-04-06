@@ -1,10 +1,4 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const statSchema = new Schema({ 
-    country : String,
-    number : Number
-})
-const Stat = mongoose.model('Stat', statSchema)
+const Stat = require('../../../models/Stat.js')
 const getAll = (req, res) => {
     Stat.find({"country": "Belgium"}, (err, doc) => {
         res.json({
@@ -18,10 +12,12 @@ const getAll = (req, res) => {
     
 }
 
-const create = (req, res) => {
+const create = (req, res, next) => {
+    //console.log(req.body)
+
     let stat = new Stat()
-    stat.country = "Belgium"
-    stat.number = 200
+    stat.country = req.body.country
+    stat.number = req.body.number
     stat.save((err, doc)=>{
         if(!err){
             res.json({
@@ -31,6 +27,11 @@ const create = (req, res) => {
                         "country" : doc                        
                     }
                 } 
+            })
+        }else{
+            res.json({
+                "status": "error",
+                "message": "could not create new stats"
             })
         }
     })
