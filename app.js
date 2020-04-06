@@ -8,6 +8,11 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const apiStatsRouter = require('./routes/api/v1/stats')
 
+const mongoose = require('mongoose')
+mongoose.connect('mongodb://localhost:27017/statsApp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
 const app = express();
 
 // view engine setup
