@@ -7,7 +7,7 @@ router.get('/', statsController.getAll)
 
 router.post('/', statsController.create)
 
-router.put('/', statsController.update)
+router.put('/updatestats', statsController.update)
 
 
 module.exports = router
