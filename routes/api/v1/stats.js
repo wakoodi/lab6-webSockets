@@ -1,28 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const statsController = require('../../../controllers/api/v1/stats')
 
 /* /api/v1/stats*/
-router.get('/', (req, res) => {
-    res.json({
-       "status": "success",
-       "data": {
-           "stats" : []
-       } 
-    })
-})
+router.get('/', statsController.getAll)
 
 
-router.post("/", (req, res) => {
-    res.json({
-        "status": "success",
-        "data": {
-            "stats" : {
-                "country" : "Belgium",
-                "new cases" : 200
-            }
-        } 
-    })
-})
+router.post("/", statsController.create)
 
 
 module.exports = router
