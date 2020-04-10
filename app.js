@@ -9,7 +9,7 @@ const usersRouter = require('./routes/users');
 const apiStatsRouter = require('./routes/api/v1/stats')
 const config = require('config')
 const mongoose = require('mongoose')
-mongoose.connect(config.get("database.conn"), {
+mongoose.connect("mongodb://localhost:27017/statsApp", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
