@@ -1,35 +1,40 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const statSchema = new Schema({ 
-   country: String,
-   numberCases: Number 
-})
-const Stat = mongoose.model('Stat', statSchema)
+const Stat = require('../../../models/Stat')
 
 const getAll = (req, res) => {
-    Stat.find((err, doc) =>{
-        if(!err){
+    Stat.find((err, doc) => {
+        if (err) {
             res.json({
-                "status" : "success",
-                "data" : {
-                    "stats" : doc
+                "status": "error",
+                "message": "Could find all statistics"
+            })
+        }
+
+        if (!err) {
+            res.json({
+                "status": "success",
+                "data": {
+                    "stats": doc
                 }
             })
         }
     })
-
-    
 }
 
 const create = (req, res) => {
     let stat = new Stat()
-    stat.country = "belgium"
-    stat.numberCases = 200
-    stat.save((err, doc)=>{
+    stat.country = req.body.country
+    stat.numberCases = req.body.numberCases
+    stat.save((err, doc) => {
+        if (err) {
+            res.json({
+                "status": "error",
+                "message": "Could not save new statistics"
+            })
+        }
         if (!err) {
             res.json({
-                "status" : "success",
-                "data" : {
+                "status": "success",
+                "data": {
                     "stats": {
                         doc
                     }
@@ -37,8 +42,6 @@ const create = (req, res) => {
             })
         }
     })
-
-    
 }
 
 module.exports.getAll = getAll
