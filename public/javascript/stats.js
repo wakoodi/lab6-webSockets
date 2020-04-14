@@ -9,7 +9,7 @@ primus = Primus.connect(base_url, {
 })
 
 primus.on("data", (json) => {
-    if(json.action === "addStats"){
+    if(json.action === "update"){
         document.querySelector("#overview").innerHTML = ""
         appendInfo()
     }
