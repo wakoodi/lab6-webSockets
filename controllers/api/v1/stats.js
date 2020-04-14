@@ -35,9 +35,28 @@ const create = (req, res) => {
             res.json({
                 "status": "success",
                 "data": {
-                    "stats": {
-                        doc
-                    }
+                    "stats": doc
+                }
+            })
+        }
+    })
+}
+
+const updateOne = (req, res) => {
+    let country = req.body.country
+    let numberCases = req.body.numberCases
+    Stat.findOneAndUpdate({"country": country}, {"numberCases": numberCases}, (err, doc) => {
+        if(err){
+            res.json({
+                "status": "error",
+                "message": "Could not update statistics"
+            })
+        }
+        if(!err){
+            res.json({
+                "status": "success",
+                "data": {
+                    "stats": doc
                 }
             })
         }
@@ -46,3 +65,4 @@ const create = (req, res) => {
 
 module.exports.getAll = getAll
 module.exports.create = create
+module.exports.updateOne = updateOne
