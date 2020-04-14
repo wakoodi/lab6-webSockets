@@ -30,6 +30,8 @@ function appendInfo() {
             
             document.querySelector("#overview").innerHTML = `<p>${country} --> ${numberCases}</p>` 
         })
+    }).catch(err => {
+        console.log(err);
     })
 }
 

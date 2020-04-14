@@ -22,10 +22,12 @@ document.querySelector("#submit").addEventListener("click", function (e) {
             "country": country,
             "numberCases": numberCases
         })
+    }).catch(err => {
+        console.log(err);
     })
 
     primus.write({
-        "action": "update",
+        "action": "update"
     })
 
     e.preventDefault()
