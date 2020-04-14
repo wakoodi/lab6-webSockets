@@ -1,4 +1,4 @@
-const base_url = "https://lab6-stats.herokuapp.com/"
+const base_url = "https://lab6-stats.herokuapp.com"
 let overview = document.querySelector("#overview");
 
 primus = Primus.connect(base_url, {
