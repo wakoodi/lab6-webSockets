@@ -28,8 +28,7 @@ function appendInfo() {
             let country = stat.country
             let numberCases = stat.numberCases
             
-            document.querySelector("#overview").innerHTML = `<p>country : ${country} --> ${numberCases}</p>`
-            
+            document.querySelector("#overview").innerHTML = `<p>${country} --> ${numberCases}</p>` 
         })
     })
 }
