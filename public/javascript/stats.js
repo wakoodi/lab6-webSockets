@@ -27,8 +27,9 @@ function appendInfo() {
         json.data.stats.forEach(stat => {
             let country = stat.country
             let numberCases = stat.numberCases
-            
-            document.querySelector("#overview").innerHTML = `<p>${country} --> ${numberCases}</p>` 
+            let p = document.createElement('p')
+            p.innerHTML = `<p>${country} --> ${numberCases}</p>`
+            document.querySelector("#overview").innerHTML = p 
         })
     }).catch(err => {
         console.log(err);
