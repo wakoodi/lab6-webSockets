@@ -1,5 +1,4 @@
 const base_url = "https://lab6-stats.herokuapp.com"
-let overview = document.querySelector("#overview");
 
 primus = Primus.connect(base_url, {
     reconnect: {
@@ -11,7 +10,7 @@ primus = Primus.connect(base_url, {
 
 primus.on("data", (json) => {
     if(json.action === "addStats"){
-        overview.innerHTML = ""
+        document.querySelector("#overview").innerHTML = ""
         appendInfo()
     }
 })
@@ -26,11 +25,11 @@ function appendInfo() {
         return response.json();
     }).then(json => {
         json.data.stats.forEach(stat => {
-            let div = document.createElement('div').setAttribute("class", "statistic")
-            let country = document.createElement('h2').innerHTML = stat.country
-            let numberCases = document.createElement('p').innerHTML = stat.numberCases
-            div.append(country).append(numberCases)
-            overview.append(div);
+            let country = stat.country
+            let numberCases = stat.numberCases
+            
+            document.querySelector("#overview").innerHTML = `<p>country : ${country} --> ${numberCases}</p>`
+            
         })
     })
 }
