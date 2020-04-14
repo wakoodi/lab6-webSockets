@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Update statistics
+body
+    h1 Update statistics
+    div#overview
+      div#form
+        label(for='country') Country:
+          select#country(name='country')
+            option(value='Belgium' selected='selected') Belgium
+            option(value='Norway') Norway
+            option(value='Malta') Malta
+          label(for='number') number cases:
+          input#number(type='number' name='number')
+        a#submit(href='#') Update
+    
