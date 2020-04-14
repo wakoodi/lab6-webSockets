@@ -25,13 +25,13 @@ function appendInfo() {
     }).then(response => {
         return response.json();
     }).then(json => {
-        json.data.forEach(stat => {
+        json.data.stats.forEach(stat => {
             let div = document.createElement('div').setAttribute("class", "statistic")
             let country = document.createElement('h2').innerHTML = stat.country
             let numberCases = document.createElement('p').innerHTML = stat.numberCases
             div.append(country).append(numberCases)
             overview.append(div);
-        });
+        })
     })
 }
 
