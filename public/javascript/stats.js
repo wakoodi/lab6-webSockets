@@ -9,7 +9,7 @@ primus = Primus.connect(base_url, {
 })
 
 primus.on("data", (json) => {
-    if(json.action === "update"){
+    if (json.action === "update") {
         document.querySelector("#overview").innerHTML = ""
         appendInfo()
     }
@@ -28,8 +28,10 @@ function appendInfo() {
             let country = stat.country
             let numberCases = stat.numberCases
             let p = document.createElement('p')
-            p.innerHTML = `${country} --> ${numberCases}`
-            document.querySelector("#overview").innerHTML = p 
+            let text = document.createTextNode(`${country} --> ${numberCases}`)
+            p.appendChild(text)
+            let overview = document.querySelector("#overview")
+            overview.appendChild(p)
         })
     }).catch(err => {
         console.log(err);
