@@ -7,6 +7,6 @@ router.get('/', statsController.getAll)
 
 router.post('/createstat', statsController.create)
 
-router.put('/updatestat', statsController.updateOne)
+router.put('/updatestats', statsController.updateOne)
 
 module.exports = router
