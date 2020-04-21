@@ -26,16 +26,7 @@ document.querySelector("#submit").addEventListener("click", function (e) {
         console.log(err);
     })
 
-
-    if (country === "Belgium") {
-        primus.write({ "action": "updateB" })
-    }
-    if (country === "Norway") {
-        primus.write({ "action": "updateN" })
-    }
-    if (country === "Malta") {
-        primus.write({ "action": "updateM" })
-    }
+    primus.write({ "action": "update" })
 
 
     e.preventDefault()
