@@ -25,6 +25,7 @@ function appendInfo() {
         return response.json();
     }).then(json => {
         if(json.data.stats.country === Belgium){
+            console.log(json.data.stats.country);
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
             let p = document.querySelector('#belgium')
