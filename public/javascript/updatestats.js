@@ -9,7 +9,7 @@ primus = Primus.connect(base_url, {
     }
 })
 
-document.querySelector("#overview").addEventListener("load", function(e) {
+/*document.querySelector("#overview").addEventListener("load", function(e) {
     fetch(base_url + "/api/v1/stats", {
         method: "get",
         headers: {
@@ -31,7 +31,7 @@ document.querySelector("#overview").addEventListener("load", function(e) {
     .catch(err => {
         console.log(err);
     })
-})
+})*/
 
 document.querySelector("#submit").addEventListener("click", function (e) {
     let country = document.querySelector("#country").value
