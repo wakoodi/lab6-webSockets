@@ -24,7 +24,7 @@ function appendInfo() {
     }).then(response => {
         return response.json();
     }).then(json => {
-        if(json.data.stats.country === Belgium){
+        if(json.data.stats.country === "Belgium"){
             console.log(json.data.stats.country);
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
@@ -33,7 +33,7 @@ function appendInfo() {
             p.appendChild(text)
             let overview = document.querySelector("#overview")
             overview.appendChild(p)
-        }else if(json.data.stats.country === Norway){
+        }else if(json.data.stats.country === "Norway"){
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
             let p = document.querySelector('#belgium')
@@ -41,7 +41,7 @@ function appendInfo() {
             p.appendChild(text)
             let overview = document.querySelector("#overview")
             overview.appendChild(p)
-        }else if(json.data.stats.country === Malta){
+        }else if(json.data.stats.country === "Malta"){
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
             let p = document.querySelector('#belgium')
