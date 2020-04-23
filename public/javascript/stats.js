@@ -24,27 +24,15 @@ function appendInfo() {
     }).then(response => {
         return response.json();
     }).then(json => {
-        if(json.data.stats.country === "Belgium"){
-            console.log(json.data.stats.country);
-            let country = json.data.stats.country
-            let numberCases = json.data.stats.numberCases
+        json.data.stats.forEach(stat => {
+            let country = stat.country
+            let numberCases = stat.numberCases
             let p = document.querySelector('#belgium')
             let text = document.createTextNode(`${country}:   ${numberCases}`)
             p.appendChild(text)
-        }else if(json.data.stats.country === "Norway"){
-            let country = json.data.stats.country
-            let numberCases = json.data.stats.numberCases
-            let p = document.querySelector('#norway')
-            let text = document.createTextNode(`${country}:   ${numberCases}`)
-            p.appendChild(text)
-        }else if(json.data.stats.country === "Malta"){
-            let country = json.data.stats.country
-            let numberCases = json.data.stats.numberCases
-            let p = document.querySelector('#malta')
-            let text = document.createTextNode(`${country}:   ${numberCases}`)
-            p.appendChild(text)
-        }
-            
+            let overview = document.querySelector("#overview")
+            overview.appendChild(p)
+        })
         })
     .catch(err => {
         console.log(err);
