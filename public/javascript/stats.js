@@ -27,7 +27,7 @@ function appendInfo() {
         json.data.stats.forEach(stat => {
             let country = stat.country
             let numberCases = stat.numberCases
-            let p = document.querySelector('#belgium')
+            let p = document.createElement('p')
             let text = document.createTextNode(`${country}:   ${numberCases}`)
             p.appendChild(text)
             let overview = document.querySelector("#overview")
@@ -37,7 +37,6 @@ function appendInfo() {
     .catch(err => {
         console.log(err);
     })
-    
 }
 
 
