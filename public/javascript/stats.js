@@ -15,29 +15,29 @@ primus.on("data", (json) => {
     }
 })
 
-    
-    function appendInfo() {
-        fetch(base_url + "/api/v1/stats", {
-            method: "get",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        }).then(response => {
-            return response.json();
-        }).then(json => {
-                let country = json.data.stats.country
-                let numberCases = json.data.stats.numberCases
-                let p = document.createElement('p')
-                let text = document.createTextNode(`${country}:${numberCases}`)
-                p.appendChild(text)
-                let overview = document.querySelector("#overview")
-                overview.appendChild(p)
-            })
-        .catch(err => {
-            console.log(err);
+function appendInfo() {
+    fetch(base_url + "/api/v1/stats", {
+        method: "get",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(response => {
+        return response.json();
+    }).then(json => {
+        json.data.stats.forEach(stat => {
+            let country = stat.country
+            let numberCases = stat.numberCases
+            let p = document.createElement('p')
+            let text = document.createTextNode(`${country}:   ${numberCases}`)
+            p.appendChild(text)
+            let overview = document.querySelector("#overview")
+            overview.appendChild(p)
         })
-
-
+        })
+    .catch(err => {
+        console.log(err);
+    })
+    
 }
 
 
