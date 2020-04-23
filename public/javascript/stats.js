@@ -36,7 +36,7 @@ function appendInfo() {
         }else if(json.data.stats.country === "Norway"){
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
-            let p = document.querySelector('#belgium')
+            let p = document.querySelector('#norway')
             let text = document.createTextNode(`${country}:   ${numberCases}`)
             p.appendChild(text)
             let overview = document.querySelector("#overview")
@@ -44,7 +44,7 @@ function appendInfo() {
         }else if(json.data.stats.country === "Malta"){
             let country = json.data.stats.country
             let numberCases = json.data.stats.numberCases
-            let p = document.querySelector('#belgium')
+            let p = document.querySelector('#malta')
             let text = document.createTextNode(`${country}:   ${numberCases}`)
             p.appendChild(text)
             let overview = document.querySelector("#overview")
