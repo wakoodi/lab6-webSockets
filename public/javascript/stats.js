@@ -24,7 +24,7 @@ function appendInfo() {
     }).then(response => {
         return response.json();
     }).then(json => {
-        json.data.stats.for(stat => {
+        json.data.stats.forEach(stat => {
             let country = stat.country
             let numberCases = stat.numberCases
             let p = document.createElement('p')
