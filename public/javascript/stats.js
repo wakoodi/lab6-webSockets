@@ -22,12 +22,11 @@ function appendInfo() {
         json.data.stats.forEach(stat => {
             let country = stat.country
             let numberCases = stat.numberCases
-            let p = document.createElement('p')
-            let textC = document.createTextNode(`${country}`)
-            let textN = document.createTextNode(`${numberCases}`)
-            p.appendChild(textC).appendChild(textN)
+
+            let pCountry = document.createElement('p').innerHTML(`${country}:`)
+            let pNumberCases = document.createElement('p').innerHTML(`${numberCases}:`)
             let overview = document.querySelector("#overview")
-            overview.appendChild(p)
+            overview.appendChild(pCountry).appendChild(pNumberCases)
         })
     }).catch(err => {
         console.log(err);
