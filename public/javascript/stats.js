@@ -1,5 +1,5 @@
 const base_url = "https://lab6-stats.herokuapp.com"
-primus = Primus.connect(base_url, {
+let primus = Primus.connect(base_url, {
     reconnect: {
         max: Infinity,
         min: 500,
@@ -7,10 +7,8 @@ primus = Primus.connect(base_url, {
     }
 })
 primus.on("data", (json) => {
-    if (json.action === "update") {
         document.querySelector("#overview").innerHTML = ""
         appendInfo()
-    }
 })
 function appendInfo() {
     fetch(base_url + "/api/v1/stats", {
