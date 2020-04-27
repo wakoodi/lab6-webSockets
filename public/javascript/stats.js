@@ -23,8 +23,9 @@ function appendInfo() {
             let country = stat.country
             let numberCases = stat.numberCases
             let p = document.createElement('p')
-            let text = document.createTextNode(`${country}:   ${numberCases}`)
-            p.appendChild(text)
+            let textC = document.createTextNode(`${country}`)
+            let textN = document.createTextNode(`${numberCases}`)
+            p.appendChild(textC).appendChild(textN)
             let overview = document.querySelector("#overview")
             overview.appendChild(p)
         })
