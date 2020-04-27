@@ -23,8 +23,10 @@ function appendInfo() {
             let country = stat.country
             let numberCases = stat.numberCases
 
-            let pCountry = document.createElement('p').innerHTML(`${country}:`)
-            let pNumberCases = document.createElement('p').innerHTML(`${numberCases}:`)
+            let pCountry = document.createElement('p')
+            pCountry.innerHTML(`${country}:`)
+            let pNumberCases = document.createElement('p')
+            pNumberCases.innerHTML(`${numberCases}:`)
             let overview = document.querySelector("#overview")
             overview.appendChild(pCountry).appendChild(pNumberCases)
         })
