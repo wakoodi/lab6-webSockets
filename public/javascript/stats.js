@@ -20,15 +20,18 @@ function appendInfo() {
         return response.json();
     }).then(json => {
         json.data.stats.forEach(stat => {
+            let overview = document.querySelector("#overview") // parent
+
+            
+
             let country = stat.country
             let numberCases = stat.numberCases
-
-            let pCountry = document.createElement('p')
-            pCountry.innerHTML(`${country}:`)
-            let pNumberCases = document.createElement('p')
-            pNumberCases.innerHTML(`${numberCases}:`)
-            let overview = document.querySelector("#overview")
-            overview.appendChild(pCountry).appendChild(pNumberCases)
+           let countryP = document.createElement('p').innerHTML(`${country}:`)
+           let numberCasesP = document.createElement('p').innerHTML(`${numberCases}:`)
+            
+           overview.innerHTML = countryP + numberCasesP
+           
+            
         })
     }).catch(err => {
         console.log(err);
