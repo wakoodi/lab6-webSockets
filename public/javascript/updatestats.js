@@ -22,14 +22,13 @@ document.querySelector("#submit").addEventListener("click", function (e) {
             "numberCases": numberCases
         })
     }).then((e)=>{
+        primus.write({ "action": "update", country: country, numberCases: numberCases })
        /* if(e.status === 200){
             primus.write({ country: country, numberCases: numberCases })
         }*/
     }).catch(err => {
         console.log(err);
     })
-
-    primus.write({ "action": "update" })
 
     e.preventDefault()
 })
