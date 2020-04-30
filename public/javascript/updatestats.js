@@ -13,19 +13,17 @@ document.querySelector("#submit").addEventListener("click", function (e) {
     let country = document.querySelector("#country").value
     let numberCases = document.querySelector("#number").value
 
-    fetch(base_url + "/api/v1/stats/"+ country, {
+    fetch(base_url + "/api/v1/stats/updatestats", {
         method: "put",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
+            "country": country,
             "numberCases": numberCases
         })
     }).then((e)=>{
         primus.write({ "action": "update", country: country, numberCases: numberCases })
-       /* if(e.status === 200){
-            primus.write({ country: country, numberCases: numberCases })
-        }*/
     }).catch(err => {
         console.log(err);
     })
