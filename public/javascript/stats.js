@@ -9,10 +9,12 @@ let primus = Primus.connect(base_url, {
 primus.on("data", (json) => {
     console.log(json)
     if (json.action === "update") {
-        document.querySelector("#overview").innerHTML = ""
-        appendInfo()
+       let country = json.country
+       document.querySelector(`.${country}`).querySelector(".counter").innerHTML = json.numberCases
+        //appendInfo();
     }
 })
+
 function appendInfo() {
     fetch(base_url + "/api/v1/stats", {
         method: "get",
