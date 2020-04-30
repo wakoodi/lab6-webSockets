@@ -7,8 +7,10 @@ let primus = Primus.connect(base_url, {
     }
 })
 primus.on("data", (json) => {
+    if (json.action === "update") {
         document.querySelector("#overview").innerHTML = ""
         appendInfo()
+    }
 })
 function appendInfo() {
     fetch(base_url + "/api/v1/stats", {
@@ -22,16 +24,13 @@ function appendInfo() {
         json.data.stats.forEach(stat => {
             let overview = document.querySelector("#overview") // parent
 
-            
-
             let country = stat.country
             let numberCases = stat.numberCases
-           let countryP = document.createElement('p').innerHTML(`${country}:`)
-           let numberCasesP = document.createElement('p').innerHTML(`${numberCases}:`)
+
+            let countryP = document.createElement('p').innerHTML(`${country}:`)
+            let numberCasesP = document.createElement('p').innerHTML(`${numberCases}`)
             
            overview.innerHTML = countryP + numberCasesP
-           
-            
         })
     }).catch(err => {
         console.log(err);
